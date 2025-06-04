@@ -77,17 +77,18 @@
 .checkbox-group {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    border: 1px solid yellow;
     
     label {
-        border: 1px solid red;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
         margin-right: 12px;
         font-size: 14px;
         white-space: nowrap;
+
+        input {
+            width: initial;
+            margin-right: 8px;
+        }
     }
 }
 
@@ -153,6 +154,11 @@
 
         &.left-aligned {
             text-align: left;
+        }
+
+        input {
+            width: initial;
+            margin-right: 8px;
         }
     }
 
