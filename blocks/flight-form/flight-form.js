@@ -33,7 +33,7 @@ export default async function decorate(block) {
             <div class="input-icon-group">
                 <span class="icon icon-passenger"></span>
                 <div class="date-group">
-                    <label>Select Passenger count & class <br>
+                    <label class="left-aligned">Select Passenger count & class <br>
                         <select id="passenger-class"><option>1 Passenger | Economy</option></select>
                     </label>
                 </div>

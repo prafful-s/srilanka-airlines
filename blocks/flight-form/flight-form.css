@@ -89,6 +89,14 @@
         text-align: center;
         text-decoration: underline;
         font-weight: 600;
+
+        &.left-aligned {
+            text-align: left;
+        }
+    }
+
+    select {
+        padding: 0.75rem 0;
     }
 }
 
