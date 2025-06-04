@@ -198,4 +198,7 @@
         padding: 10px;
         margin-top: 10px;
     }
+    .input-icon-group, .input-group {
+        flex: unset
+    }
 }
