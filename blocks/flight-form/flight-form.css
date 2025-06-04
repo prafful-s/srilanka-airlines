@@ -196,6 +196,29 @@
 }
 
 /* Responsive Styles */
+@media (max-width: 900px) {
+    .flight-booking-form {
+        max-width: 100%;
+        padding: 8px 2px;
+    }
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .find-flights-button {
+        width: 100%;
+        margin: 12px 0 0 0;
+    }
+    .multi-city-link {
+        margin: 8px 0 0 0;
+    }
+}
+
 @media (max-width: 600px) {
     .flight-booking-form form {
         padding: 15px 5px;
