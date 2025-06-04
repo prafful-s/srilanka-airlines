@@ -24,15 +24,19 @@ export default async function decorate(block) {
             <div class="input-icon-group">
                 <span class="icon icon-calendar"></span>
                 <div class="date-group">
-                <label>Departure<br><input type="date" id="departureDate"></label>
+                    <label>Departure<br><input type="date" id="departureDate"></label>
                 </div>
                 <div class="date-group">
-                <label>Return<br><input type="date" id="returnDate"></label>
+                    <label>Return<br><input type="date" id="returnDate"></label>
                 </div>
             </div>
             <div class="input-icon-group">
                 <span class="icon icon-passenger"></span>
-                <select id="passenger-class"><option>1 Passenger | Economy</option></select>
+                <div class="date-group">
+                    <label>Select Passenger count & class <br>
+                        <select id="passenger-class"><option>1 Passenger | Economy</option></select>
+                    </label>
+                </div>
             </div>
             </div>
             <div class="form-row bottom-row">
