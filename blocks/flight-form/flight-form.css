@@ -261,3 +261,9 @@
         flex: 1;
     }
 }
+
+@media (max-width: 360px) {
+    .flight-form-tabs {
+        margin: -30px auto 0;
+    }
+}
