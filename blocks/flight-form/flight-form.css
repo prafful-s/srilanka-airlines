@@ -72,7 +72,7 @@
 
 .top-row {
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin: 15px 0 8px;
 }
 
 .checkbox-group {
