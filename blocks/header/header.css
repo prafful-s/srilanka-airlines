@@ -40,9 +40,14 @@ header .nav-brand {
   line-height: 1em;
 }
 
-header nav .nav-brand p, header nav .nav-tools p {
-  margin: 0;
-  line-height: unset;
+header nav .nav-brand p, header nav .nav-tools {
+  p {
+    margin: 0;
+    line-height: unset;
+  }
+  .icon {
+    color: var(--link-color);
+  }
 }
 
 header nav .nav-brand picture {
@@ -292,6 +297,7 @@ header .header-topbar {
   color: var(--text-color-light);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: var(--body-font-size-xs);
   text-transform: uppercase;
   padding: 0 16px;
