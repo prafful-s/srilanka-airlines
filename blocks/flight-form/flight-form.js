@@ -2,6 +2,12 @@ export default async function decorate(block) {
     console.log("flight-form added");
     block.innerHTML= `
     <div class="flight-booking-form">
+        <div class="flight-form-tabs">
+            <button class="flight-form-tab">BOOK</button>
+            <button class="flight-form-tab">MANAGE</button>
+            <button class="flight-form-tab">CHECK-IN</button>
+            <button class="flight-form-tab">FLIGHT + HOTEL</button>
+        </div>
         <form>
             <div class="form-row top-row">
             <div class="checkbox-group">
