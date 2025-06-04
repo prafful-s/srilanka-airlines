@@ -40,7 +40,7 @@ header .nav-brand {
   line-height: 1em;
 }
 
-header nav .nav-brand p, header nav .nav-tools {
+header nav .nav-brand, header nav .nav-tools {
   p {
     margin: 0;
     line-height: unset;
@@ -322,6 +322,7 @@ header .header-chevron-down {
     border: 2px solid transparent;
     margin-left: 4px;
 }
+
 header .header-chevron-down::after {
     content: "";
     display: block;
