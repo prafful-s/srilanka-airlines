@@ -19,13 +19,9 @@ header nav {
   top: 25px;
 }
 
-header nav a:any-link {
-  color: currentcolor;
-}
-
 header nav[aria-expanded='true'] {
   grid-template:
-        'hamburger brand' 115px
+        'hamburger brand' var(--nav-height)
         'sections sections';
     grid-template-columns: 50px 1fr;
     overflow-y: scroll;
@@ -44,7 +40,7 @@ header .nav-brand {
   line-height: 1em;
 }
 
-header nav .nav-brand p {
+header nav .nav-brand p, header nav .nav-tools p {
   margin: 0;
   line-height: unset;
 }
@@ -138,7 +134,7 @@ header nav .nav-sections ul  {
 }
 
 header nav .nav-sections li {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
 
 }
