@@ -218,6 +218,7 @@ header nav[aria-expanded='true'] .nav-tools li {
 
       &:hover {
         color: var(--link-hover-color);
+        text-decoration: none;
       }
     }
   }
