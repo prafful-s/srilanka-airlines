@@ -65,11 +65,22 @@ export default function decorate(block) {
 
   if (!cfFolderPath) return;
 
-  // Helper to create a slide element
-  function createSlide(item) {
+  // Responsive slidesToShow
+  function getResponsiveSlidesToShow() {
+    const width = window.innerWidth;
+    if (width >= 1024) return slidesToShow;
+    if (width >= 600) return 2;
+    return 1;
+  }
+
+  let currentSlidesToShow = getResponsiveSlidesToShow();
+  let sortedItems = [];
+
+  // Update slide width helper
+  function createSlide(item, slidesToShowValue) {
     const slide = document.createElement('div');
     slide.classList.add('slide', layout);
-    slide.style.width = `${100 / slidesToShow}%`;
+    slide.style.width = `${100 / slidesToShowValue}%`;
     slide.innerHTML = `
       <div class="cf-carousel-image"><picture><img src="${item.image._path}" loading="eager"></picture></div>
       <div class="cf-carousel-text">
@@ -81,7 +92,6 @@ export default function decorate(block) {
     return slide;
   }
 
-  // Helper to create a navigation button
   function createNavButton(page, totalSlides, slidesToShow, block, buttons) {
     const button = document.createElement('button');
     button.title = `Go to slides ${page * slidesToShow + 1} - ${Math.min((page + 1) * slidesToShow, totalSlides)}`;
@@ -147,44 +157,42 @@ export default function decorate(block) {
     }
   });
 
+  function renderCarousel() {
+    block.replaceChildren();
+    currentSlidesToShow = getResponsiveSlidesToShow();
+    // Render slides
+    sortedItems.forEach(item => {
+      block.append(createSlide(item, currentSlidesToShow));
+    });
+    // Render navigation buttons
+    buttons.innerHTML = '';
+    const totalSlides = sortedItems.length;
+    totalPages = Math.ceil(totalSlides / currentSlidesToShow);
+    for (let page = 0; page < totalPages; page++) {
+      buttons.append(createNavButton(page, totalSlides, currentSlidesToShow, block, buttons));
+    }
+  }
+
   (async () => {
     try {
       // Fetch and process data
       const cfItems = await loadContentFragments(cfFolderPath);
       const { location } = await userLocation();
       const filteredItems = filterItemsByLocation(cfItems, location);
-      const sortedItems = sortItemsByLastModified(filteredItems);
+      sortedItems = sortItemsByLastModified(filteredItems);
 
-      // Render slides
-      block.replaceChildren();
-      sortedItems.forEach(item => {
-        block.append(createSlide(item));
-      });
-
-      // Render navigation buttons
-      const totalSlides = sortedItems.length;
-      totalPages = Math.ceil(totalSlides / slidesToShow);
-      for (let page = 0; page < totalPages; page++) {
-        buttons.append(createNavButton(page, totalSlides, slidesToShow, block, buttons));
-      }
+      renderCarousel();
 
       // Insert navigation buttons and arrows
       if (block.nextElementSibling) block.nextElementSibling.replaceWith(buttons);
       else block.parentElement.append(buttons);
-
-      // Insert navigation arrows
       if (arrowNavigation) {
         block.parentElement.append(leftArrow);
         block.parentElement.append(rightArrow);
       }
-
-      // Add custom class selector
       if (customStyle) block.classList.add(customStyle);
-
-      // Initial arrow visibility
       if (arrowNavigation) updateArrowVisibility(0);
 
-      // Highlight correct button on scroll
       block.addEventListener('scroll', () => {
         const page = Math.round(block.scrollLeft / block.clientWidth);
         currentPage = page;
@@ -193,6 +201,15 @@ export default function decorate(block) {
         });
         if (arrowNavigation) updateArrowVisibility(page);
       }, { passive: true });
+
+      // Responsive: re-render on resize
+      window.addEventListener('resize', () => {
+        const newSlidesToShow = getResponsiveSlidesToShow();
+        if (newSlidesToShow !== currentSlidesToShow) {
+          renderCarousel();
+          if (arrowNavigation) updateArrowVisibility(0);
+        }
+      });
     } catch (error) {
       console.error('Error loading content fragments or user location:', error);
     }
