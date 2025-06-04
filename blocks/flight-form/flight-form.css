@@ -183,6 +183,11 @@
 
         margin-right: 16px;
         font-size: 14px;
+        
+        input {
+            width: initial;
+            margin-right: 8px;
+        }
     }
 }
 
