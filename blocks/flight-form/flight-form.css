@@ -55,6 +55,7 @@
 .input-icon-group {
     display: flex;
     align-items: center;
+    justify-content: stretch;
     background: #f5f7fa;
     border-radius: 6px;
     padding: 8px 12px;
@@ -81,7 +82,7 @@
 .date-group {
     display: flex;
     flex-direction: column;
-    margin-right: 8px;
+    flex: 1;
 
     label {
         font-size: 12px;
