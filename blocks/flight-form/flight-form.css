@@ -65,6 +65,14 @@
     min-width: 0;
 }
 
+.button-group {
+    justify-content: space-between;
+
+    button {
+        margin: 0;
+    }
+}
+
 .input-group {
     border-color: transparent;
     background: transparent
@@ -133,7 +141,7 @@
     border: none;
     border-radius: 6px;
     padding: 10px 32px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s;
