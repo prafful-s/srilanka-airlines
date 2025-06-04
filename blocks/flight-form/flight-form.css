@@ -201,4 +201,14 @@
     .input-icon-group, .input-group {
         flex: unset
     }
+    .button-group {
+        flex-direction: column;
+        
+        .radio-group {
+            align-self: flex-start;
+        }
+    }
+    .bottom-row {
+        margin-bottom: 0
+    }
 }
