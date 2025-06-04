@@ -13,8 +13,8 @@
  :root {
   /* colors */
   --color-yellow: #ffea00;
-  --link-color: black;
-  --link-hover-color: black;
+  --link-color: ##0088dd;
+  --link-hover-color: #153d8a;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
@@ -25,7 +25,7 @@
   --highlight-text-color: var(--text-color);
 
   /* fonts */
-  --body-font-family: 'Source Sans Pro', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --heading-font-family: asar, georgia, 'Times New Roman', times, serif;
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -43,7 +43,7 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 115px;
+  --nav-height: 58px;
 
   /* buttons */
   --button-background-color: var(--color-yellow);

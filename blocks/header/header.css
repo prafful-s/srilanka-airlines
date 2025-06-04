@@ -24,10 +24,12 @@ header nav a:any-link {
 }
 
 header nav[aria-expanded='true'] {
-  grid-template: 'hamburger brand' 'sections sections' 'tools tools';
-  grid-template-columns:  56px 1fr;
-  overflow-y: scroll;
-  min-height: 100vh;
+  grid-template:
+        'hamburger brand' 115px
+        'sections sections';
+    grid-template-columns: 50px 1fr;
+    overflow-y: scroll;
+    min-height: 100vh;
 }
 
 /* brand */
@@ -127,11 +129,18 @@ header nav .nav-sections ul  {
 header nav .nav-sections li {
   font-size: 20px;
   font-weight: 500;
+
 }
 
 header nav[aria-expanded='true'] .nav-sections {
   display: block;
   align-self: flex-start;
+
+  li{
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 /* tools */
@@ -203,6 +212,14 @@ header nav[aria-expanded='true'] .nav-tools li {
     background-color: unset;
     width: unset;
     margin: 0;
+
+    & > li > a {
+      color: var(--link-color);
+
+      &:hover {
+        color: var(--link-hover-color);
+      }
+    }
   }
 
   header nav[aria-expanded='true'] .nav-sections ol {
