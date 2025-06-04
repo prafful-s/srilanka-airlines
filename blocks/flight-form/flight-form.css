@@ -8,6 +8,8 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     padding: 16px 12px;
     box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 
     &, & * {
         box-sizing: border-box;
@@ -16,27 +18,32 @@
 
 .flight-form-tabs {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     background: transparent;
     border-bottom: 0;
     margin-bottom: 8px;
     gap: 8px;
     padding: 0 0 8px 0;
+
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    margin: auto;
+    z-index: 1;
   }
   
 .flight-form-tab {
     background: #fff;
     color: #0088dd;
     border: 2px solid #0088dd;
-    border-bottom: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     font-weight: bold;
     font-size: 14px;
     padding: 10px 18px;
     margin: 0;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     transition: background 0.2s, color 0.2s;
 }
 
@@ -249,7 +256,7 @@
         gap: 4px;
         padding: 0 0 4px 0;
       }
-      
+
       .flight-form-tab {
         border-radius: 8px 8px 8px 8px;
         font-size: 13px;
