@@ -33,7 +33,7 @@ main .carousel > div {
   flex-shrink: 0;
   scroll-snap-align: start;
   position: relative;
-  min-height: 580px;
+  min-height: 700px;
   align-items: flex-end;
   display: flex;
 }
