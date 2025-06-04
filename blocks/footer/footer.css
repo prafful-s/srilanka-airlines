@@ -67,3 +67,58 @@ footer .footer p {
   font-size: var(--body-font-size-xs);
   line-height: 1.25;
 }
+
+/* Srilanka Airlines */
+
+.footer {
+  font-family: "roboto", "Helvetica", "Arial", sans-serif;
+  padding: 20px;;
+  
+  div {
+      display: block;
+      grid: unset;
+  }
+
+  .brand{
+
+      .columns {
+
+          & > div {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
+              gap: 80px;
+              
+              h5 {
+                  font-size: 20px;
+                  margin-bottom: 20px;
+              }
+              
+              pre {
+                  font-size: 12px;
+                  line-height: 30px;
+              }
+
+          }
+
+      }
+   }
+  
+  
+  @media (max-width: 600px) {
+ 
+      
+      .brand {
+          
+          .columns {
+              
+              & > div {
+                  
+                  flex-direction: column;
+                  gap: 30px;
+              }
+          }
+      }
+  }
+}
