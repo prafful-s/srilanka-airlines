@@ -44,10 +44,10 @@ export default async function decorate(block) {
                     <div class="radio-group">
                         <label><input type="radio" name="tripType" checked> Round Trip</label>
                         <label><input type="radio" name="tripType"> One Way</label>
-                        <label><input type="checkbox" id="flexible-dates"> Flexible Dates</label>
                     </div>
                 </div>
                 <div class="input-group">
+                    <label><input type="checkbox" id="flexible-dates"> Flexible Dates</label>
                     <button type="submit" class="find-flights-button">Search</button>
                 </div>
             </div>

@@ -57,13 +57,19 @@
     display: flex;
     align-items: center;
     justify-content: stretch;
-    background: #f5f7fa;
+    background: #ffffff;
     border-radius: 6px;
     padding: 8px 12px;
     flex: 1 1 200px;
     border: 1px solid #aaaaaa;
     min-width: 0;
 }
+
+.input-group {
+    border-color: transparent;
+    background: transparent
+}
+
 
 .input-icon-group .icon {
     margin-right: 8px;
