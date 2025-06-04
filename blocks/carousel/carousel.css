@@ -67,6 +67,7 @@ main .carousel::-webkit-scrollbar {
 
 main .carousel-wrapper {
   max-width: unset;
+  position: relative;
 }
 
 main .carousel-wrapper > :last-child {
@@ -74,6 +75,7 @@ main .carousel-wrapper > :last-child {
   margin-top: 0;
   position: absolute;
   display: flex;
+  bottom: 120px;
   right: 0;
   left: 0;
   justify-content: center;
@@ -81,11 +83,11 @@ main .carousel-wrapper > :last-child {
 
 main .carousel-wrapper > :last-child button {
   display: block;
-  height: 10px;
-  width: 10px;
+  height: 1px;
+  width: 20px;
   padding: 0;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: var(--highlight-background-color);
 }
 
