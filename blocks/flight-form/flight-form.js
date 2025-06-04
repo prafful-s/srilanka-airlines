@@ -6,7 +6,7 @@ export default async function decorate(block) {
             <button class="flight-form-tab active">BOOK</button>
             <button class="flight-form-tab">MANAGE</button>
             <button class="flight-form-tab">CHECK-IN</button>
-            <button class="flight-form-tab">FLIGHT + HOTEL</button>
+            <button class="flight-form-tab">FLIGHT +<br> HOTEL</button>
         </div>
         <form>
             <div class="form-row top-row">
