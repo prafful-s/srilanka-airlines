@@ -29,7 +29,9 @@
 
     position: absolute;
     top: -30px;
-    width: 100%;
+    left: 0;
+    right: 0;
+    width: 90%;    
     margin: auto;
     z-index: 1;
   }
@@ -196,7 +198,7 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .flight-booking-form {
         max-width: 100%;
         padding: 8px 2px;
@@ -217,9 +219,7 @@
     .multi-city-link {
         margin: 8px 0 0 0;
     }
-}
 
-@media (max-width: 600px) {
     .flight-booking-form form {
         padding: 15px 5px;
         max-width: 100%;
