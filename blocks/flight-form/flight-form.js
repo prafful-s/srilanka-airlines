@@ -1,4 +1,49 @@
 export default async function decorate(block) {
     console.log("flight-form added");
-    block.innerHTML= '<div class="flight-booking-form"><form><div class="form-group-row"><div class="form-group"><label for="tripType">Fare</label><select id="tripType"><option value="one-way">One Way</option><option value="return">Return Trip</option></select></div><div class="form-group"><label for="from">From</label><input type="text" id="from" placeholder="Enter departure station" required=""></div><div class="form-group"><label for="to">To</label><input type="text" id="to" placeholder="Enter arrival station" required=""></div></div><div class="form-group-row"><div class="form-group"><label for="departureDate">Depart</label><input type="date" id="departureDate" required=""></div><div class="form-group"><label for="returnDate">Return</label><input type="date" id="returnDate" required=""></div><div class="form-group"><label for="travelClass">Travel Class</label><select id="travelClass"><option value="economy">Economy</option><option value="business">Business</option><option value="first-class">First Class</option></select></div><div class="form-group"><label for="passengers">Select Passengers</label><input type="number" id="passengers" min="1" placeholder="No. of passengers" required=""></div></div><button type="submit" class="find-flights-button">Find Flights</button></form></div>';
+    block.innerHTML= `
+    <div class="flight-booking-form">
+        <form>
+            <div class="form-row top-row">
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="redeem"> Redeem</label>
+                <label><input type="checkbox" id="voucher-redeem"> Voucher Redeem</label>
+            </div>
+            <a href="#" class="multi-city-link">Multi City</a>
+            </div>
+            <div class="form-row">
+            <div class="input-icon-group">
+                <span class="icon icon-from"></span>
+                <select id="from"><option>From</option></select>
+            </div>
+            <div class="input-icon-group">
+                <span class="icon icon-to"></span>
+                <select id="to"><option>To</option></select>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="input-icon-group">
+                <span class="icon icon-calendar"></span>
+                <div class="date-group">
+                <label>Departure<br><input type="date" id="departureDate"></label>
+                </div>
+                <div class="date-group">
+                <label>Return<br><input type="date" id="returnDate"></label>
+                </div>
+            </div>
+            <div class="input-icon-group">
+                <span class="icon icon-passenger"></span>
+                <select id="passenger-class"><option>1 Passenger | Economy</option></select>
+            </div>
+            </div>
+            <div class="form-row bottom-row">
+            <div class="radio-group">
+                <label><input type="radio" name="tripType" checked> Round Trip</label>
+                <label><input type="radio" name="tripType"> One Way</label>
+                <label><input type="checkbox" id="flexible-dates"> Flexible Dates</label>
+            </div>
+            <button type="submit" class="find-flights-button">Search</button>
+            </div>
+        </form>
+    </div>
+    `;
 }
