@@ -206,7 +206,10 @@ header nav[aria-expanded='true'] .nav-tools li {
   }
 
   header nav .nav-sections {
-    display: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   header nav .nav-sections ul {
