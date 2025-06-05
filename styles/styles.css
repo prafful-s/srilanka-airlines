@@ -420,6 +420,12 @@ main .section[data-section-status='initialized'] {
           margin: 0 auto;
           text-align: center;
       }
+
+      &.button-container {
+        text-align: center;
+      }
   }
 }
+
+
 
