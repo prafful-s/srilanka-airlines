@@ -114,7 +114,8 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
 .cf-carousel-card {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 0 7px rgba(0,0,0,0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
