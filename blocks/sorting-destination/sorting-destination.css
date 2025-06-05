@@ -1,44 +1,56 @@
 /* Wrapper for the whole sorting/filter bar */
 .sorting-destination-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
   flex-wrap: wrap;
   margin-bottom: 24px;
-  .sorting-destination {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 /* Filters group */
 .sorting-destination-filters {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .sorting-destination-select {
-  padding: 8px 12px;
+  padding: 6px 16px 6px 12px;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #fff;
-  font-size: 16px;
-  color: #444;
-  min-width: 140px;
+  font-size: 15px;
+  color: #222;
+  min-width: 130px;
   outline: none;
   appearance: none;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.sorting-destination-select:focus {
+  border-color: #009cff;
+  box-shadow: 0 0 0 2px #e6f4ff;
 }
 
 .sorting-destination-clear {
   background: none;
   border: none;
   color: #888;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   cursor: pointer;
   align-self: center;
-  margin-left: 4px;
+  margin-left: 2px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.sorting-destination-clear:hover {
+  color: #009cff;
 }
 
 /* Sort group */
@@ -47,6 +59,7 @@
   align-items: center;
   gap: 6px;
   margin-left: auto;
+  white-space: nowrap;
 }
 
 .sorting-destination-sort-icon {
@@ -58,18 +71,27 @@
 .sorting-destination-sort-btn {
   background: none;
   border: none;
-  color: #009cff;
-  font-weight: bold;
-  font-size: 16px;
+  color: #222;
+  font-weight: 400;
+  font-size: 15px;
   display: flex;
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  transition: color 0.2s;
+}
+.sorting-destination-sort-btn:hover {
+  color: #009cff;
 }
 
+.sorting-destination-sort-label {
+  font-weight: 400;
+  color: #222;
+}
 .sorting-destination-sort-label strong {
   color: #009cff;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .sorting-destination-sort-caret {
@@ -78,19 +100,28 @@
 }
 
 /* Responsive styles */
+@media (max-width: 900px) {
+  .sorting-destination-wrapper {
+    gap: 16px;
+  }
+  .sorting-destination-filters {
+    gap: 8px;
+  }
+}
 @media (max-width: 600px) {
   .sorting-destination-wrapper {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 12px;
   }
   .sorting-destination-filters {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     align-items: flex-start;
   }
   .sorting-destination-sort {
     justify-content: flex-start;
     margin-left: 0;
+    margin-top: 4px;
   }
 }
