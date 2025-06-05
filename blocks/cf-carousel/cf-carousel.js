@@ -157,7 +157,6 @@ export default function decorate(block) {
     const cardMaxWidth = 320;
     const slidesToShowNow = getResponsiveSlidesToShow();
     block.style.maxWidth = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
-    block.style.margin = '0 auto';
   }
 
   function renderCarousel() {

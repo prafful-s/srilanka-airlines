@@ -7,6 +7,7 @@ main .cf-carousel {
   scroll-snap-type: x mandatory;
   overflow: scroll hidden;
   scroll-behavior: smooth;
+  margin: 0 auto;
   gap: 20px;
 }
 
@@ -112,6 +113,9 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
 
 /* Carousel Card Styles */
 .cf-carousel-card {
+  * {
+    box-sizing: border-box;
+  }
   background: #fff;
   border-radius: 18px;
   border: 1px solid #e5e5e5;
@@ -152,7 +156,8 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .cf-carousel-card-body h3 {
