@@ -170,6 +170,7 @@ export default function decorate(block) {
     const cardMaxWidth = 320;
     const slidesToShowNow = getResponsiveSlidesToShow();
     block.style.maxWidth = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
+    block.parentElement.querySelector('.cf-carousel-arrows').style.width = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
   }
 
   function renderCarousel() {
