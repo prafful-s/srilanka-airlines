@@ -54,6 +54,15 @@ export default function decorate(block) {
   const buttons = document.createElement('div');
   buttons.classList.add('cf-carousel-buttons');
 
+  // Pagination dots container
+  const pagination = document.createElement('div');
+  pagination.classList.add('cf-carousel-pagination');
+
+  // View All Services button
+  const viewAllBtn = document.createElement('button');
+  viewAllBtn.className = 'cf-carousel-view-all-btn';
+  viewAllBtn.textContent = 'VIEW ALL SERVICES';
+
   // Get configuration from block attributes
   const cfFolderPath = block?.querySelector('[data-aue-prop="reference"]')?.textContent?.trim() || '';
   const slidesToShowEl = block?.querySelector('[data-aue-prop="slidesToShow"]');
@@ -76,20 +85,22 @@ export default function decorate(block) {
   let currentSlidesToShow = getResponsiveSlidesToShow();
   let sortedItems = [];
 
-  // Update slide width helper
+  // Card-based slide structure
   function createSlide(item, slidesToShowValue) {
-    const slide = document.createElement('div');
-    slide.classList.add('slide', layout);
-    slide.style.width = `${100 / slidesToShowValue}%`;
-    slide.innerHTML = `
-      <div class="cf-carousel-image"><picture><img src="${item.image._path}" loading="eager"></picture></div>
-      <div class="cf-carousel-text">
+    const card = document.createElement('div');
+    card.classList.add('cf-carousel-card', layout);
+    card.style.width = `${100 / slidesToShowValue}%`;
+    card.innerHTML = `
+      <div class="cf-carousel-card-image">
+        <img src="${item.image._path}" alt="${item.title}" loading="eager" />
+      </div>
+      <div class="cf-carousel-card-body">
         <h3>${item.title}</h3>
         <p>${item.description?.plaintext || item.description || ''}</p>
-        ${item.button ? `<button class="cf-carousel-item-button">${item.button}</button>` : ''}
+        ${item.button ? `<button class="cf-carousel-card-btn">${item.button}</button>` : ''}
       </div>
     `;
-    return slide;
+    return card;
   }
 
   function createNavButton(page, totalSlides, slidesToShow, block, buttons) {
@@ -104,8 +115,22 @@ export default function decorate(block) {
       [...buttons.children].forEach((r) => r.classList.remove('selected'));
       button.classList.add('selected');
       updateArrowVisibility(page);
+      updatePagination(page);
     });
     return button;
+  }
+
+  // Pagination dots
+  function updatePagination(activePage) {
+    pagination.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'cf-carousel-pagination-dot' + (i === activePage ? ' active' : '');
+      dot.addEventListener('click', () => {
+        scrollToPage(i);
+      });
+      pagination.appendChild(dot);
+    }
   }
 
   // Create left and right arrow buttons
@@ -133,6 +158,7 @@ export default function decorate(block) {
       r.classList.toggle('selected', idx === page);
     });
     updateArrowVisibility(page);
+    updatePagination(page);
   }
 
   function updateArrowVisibility(page) {
@@ -171,6 +197,7 @@ export default function decorate(block) {
     for (let page = 0; page < totalPages; page++) {
       buttons.append(createNavButton(page, totalSlides, currentSlidesToShow, block, buttons));
     }
+    updatePagination(0);
   }
 
   (async () => {
@@ -190,8 +217,12 @@ export default function decorate(block) {
         block.parentElement.append(leftArrow);
         block.parentElement.append(rightArrow);
       }
+      // Insert pagination and view all button
+      block.parentElement.append(pagination);
+      block.parentElement.append(viewAllBtn);
       if (customStyle) block.classList.add(customStyle);
       if (arrowNavigation) updateArrowVisibility(0);
+      updatePagination(0);
 
       block.addEventListener('scroll', () => {
         const page = Math.round(block.scrollLeft / block.clientWidth);
@@ -200,6 +231,7 @@ export default function decorate(block) {
           r.classList.toggle('selected', idx === page);
         });
         if (arrowNavigation) updateArrowVisibility(page);
+        updatePagination(page);
       }, { passive: true });
 
       // Responsive: re-render on resize
@@ -208,6 +240,7 @@ export default function decorate(block) {
         if (newSlidesToShow !== currentSlidesToShow) {
           renderCarousel();
           if (arrowNavigation) updateArrowVisibility(0);
+          updatePagination(0);
         }
       });
     } catch (error) {
