@@ -360,3 +360,13 @@ main .section[data-section-status='initialized'] {
       margin-top: -50px;
   }
 }
+
+h1 {
+  font-family: Roboto, serif, sans-serif;
+  font-size: 30px;
+  letter-spacing: normal;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #0088DD;
+  margin-bottom: 35px;
+}
