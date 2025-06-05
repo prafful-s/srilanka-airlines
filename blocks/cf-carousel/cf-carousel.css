@@ -103,14 +103,35 @@ main .cf-carousel-wrapper > .cf-carousel-buttons > button.selected {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  pointer-events: none; /* allow arrows to be clickable, but not block carousel */
+  pointer-events: none;
   z-index: 2;
+  /* No stretching of children */
 }
 
 .cf-carousel-arrows .cf-carousel-arrow {
-  position: static !important;
-  margin: 0 8px;
+  flex: 0 0 auto;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% !important;
+  background: #009cff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   pointer-events: auto;
+  margin: 0 -22px;
+  padding: 0;
+  border: none;
+}
+
+.cf-carousel-arrows .cf-carousel-arrow svg {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 /* Remove old absolute positioning for arrows inside wrapper */
@@ -259,6 +280,19 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
   .cf-carousel-card-body {
     padding: 16px 8px 12px 8px;
   }
+  .cf-carousel-arrows .cf-carousel-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    margin: 0 -12px;
+  }
+  .cf-carousel-arrows .cf-carousel-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -273,8 +307,16 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
     padding: 0 2px;
   }
   .cf-carousel-arrows .cf-carousel-arrow {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 22px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    margin: 0 -6px;
+  }
+  .cf-carousel-arrows .cf-carousel-arrow svg {
+    width: 18px;
+    height: 18px;
   }
 }
