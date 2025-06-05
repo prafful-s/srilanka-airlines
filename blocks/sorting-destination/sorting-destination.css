@@ -6,6 +6,9 @@
   gap: 24px;
   flex-wrap: wrap;
   margin-bottom: 24px;
+  .sorting-destination {
+    width: 100%;
+  }
 }
 
 /* Filters group */
