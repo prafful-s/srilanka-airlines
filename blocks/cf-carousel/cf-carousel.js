@@ -131,6 +131,10 @@ export default function decorate(block) {
   arrowContainer.classList.add('cf-carousel-arrows');
   arrowContainer.append(leftArrow, rightArrow);
 
+  if (window.innerWidth >= 1024) {
+    arrowContainer.style.width = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
+  }
+
   let currentPage = 0;
   let totalPages = 1;
 
