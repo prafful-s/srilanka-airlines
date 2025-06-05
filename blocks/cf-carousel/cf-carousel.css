@@ -7,7 +7,7 @@ main .cf-carousel {
   scroll-snap-type: x mandatory;
   overflow: scroll hidden;
   scroll-behavior: smooth;
-  margin: auto;
+  gap: 20px;
 }
 
 main .cf-carousel picture {
@@ -118,7 +118,6 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 8px;
   overflow: hidden;
   min-width: 260px;
   max-width: 320px;
