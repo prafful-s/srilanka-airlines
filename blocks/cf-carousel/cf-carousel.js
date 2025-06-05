@@ -183,6 +183,13 @@ export default function decorate(block) {
     }
   });
 
+  function setCarouselWidth() {
+    const cardMaxWidth = 320;
+    const slidesToShowNow = getResponsiveSlidesToShow();
+    block.style.maxWidth = `${cardMaxWidth * slidesToShowNow}px`;
+    block.style.margin = '0 auto';
+  }
+
   function renderCarousel() {
     block.replaceChildren();
     currentSlidesToShow = getResponsiveSlidesToShow();
@@ -198,6 +205,7 @@ export default function decorate(block) {
       buttons.append(createNavButton(page, totalSlides, currentSlidesToShow, block, buttons));
     }
     updatePagination(0);
+    setCarouselWidth();
   }
 
   (async () => {
@@ -241,6 +249,8 @@ export default function decorate(block) {
           renderCarousel();
           if (arrowNavigation) updateArrowVisibility(0);
           updatePagination(0);
+        } else {
+          setCarouselWidth();
         }
       });
     } catch (error) {
