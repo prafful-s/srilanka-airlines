@@ -277,7 +277,7 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
 @media (max-width: 900px) {
   .cf-carousel-card {
     min-width: 220px;
-    max-width: 90vw;
+    /* max-width: 90vw; */
   }
   .cf-carousel-card-body {
     padding: 16px 8px 12px 8px;
@@ -298,12 +298,12 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
 }
 
 @media (max-width: 600px) {
-  .cf-carousel-card {
+  /* .cf-carousel-card {
     min-width: 90vw;
     max-width: 95vw;
-  }
+  } */
   .cf-carousel-arrows {
-    width: 100%;
+    width: 92%;
     left: 0;
     right: 0;
     padding: 0 2px;

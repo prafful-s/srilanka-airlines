@@ -361,6 +361,38 @@ main .section[data-section-status='initialized'] {
   }
 }
 
+.left-aligned-carousel.cf-carousel {
+  margin: 0 auto 0 0;
+
+  @media (max-width: 600px) {
+    margin: 0 auto;
+  }
+  
+  ~ .cf-carousel-arrows{
+      margin: 0 auto 0 0;
+
+      @media (max-width: 600px) {
+        margin: 0 auto;
+      }
+  }
+}
+
+.default-content-wrapper {
+  p {
+      font-family: Helvetica Neue, serif, sans-serif;
+      font-size: 12px;
+      letter-spacing: normal;
+      line-height: 1.5;
+      font-weight: 400;
+      color: #424345;
+      
+      @media (max-width: 600px) {
+          width: 90%;
+          margin: 0 auto;
+      }
+  }
+}
+
 h1 {
   font-family: Roboto, serif, sans-serif;
   font-size: 30px;
