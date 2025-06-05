@@ -126,6 +126,11 @@ export default function decorate(block) {
   `;
   rightArrow.style.display = 'none';
 
+  // Create arrow button container
+  const arrowContainer = document.createElement('div');
+  arrowContainer.classList.add('cf-carousel-arrows');
+  arrowContainer.append(leftArrow, rightArrow);
+
   let currentPage = 0;
   let totalPages = 1;
 
@@ -193,8 +198,7 @@ export default function decorate(block) {
 
       // Insert navigation arrows
       if (arrowNavigation) {
-        block.parentElement.append(leftArrow);
-        block.parentElement.append(rightArrow);
+        block.parentElement.append(arrowContainer);
       }
       // Insert pagination only
       block.parentElement.append(pagination);
