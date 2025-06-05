@@ -7,7 +7,6 @@ main .cf-carousel {
   scroll-snap-type: x mandatory;
   overflow: scroll hidden;
   scroll-behavior: smooth;
-  max-width: 100%px;
   margin: auto;
 }
 
