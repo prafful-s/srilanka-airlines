@@ -1,0 +1,93 @@
+/* Wrapper for the whole sorting/filter bar */
+.sorting-destination-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* Filters group */
+.sorting-destination-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sorting-destination-select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 16px;
+  color: #444;
+  min-width: 140px;
+  outline: none;
+  appearance: none;
+}
+
+.sorting-destination-clear {
+  background: none;
+  border: none;
+  color: #888;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: center;
+  margin-left: 4px;
+}
+
+/* Sort group */
+.sorting-destination-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.sorting-destination-sort-icon {
+  display: flex;
+  align-items: center;
+  color: #009cff;
+}
+
+.sorting-destination-sort-btn {
+  background: none;
+  border: none;
+  color: #009cff;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.sorting-destination-sort-label strong {
+  color: #009cff;
+  font-weight: bold;
+}
+
+.sorting-destination-sort-caret {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .sorting-destination-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .sorting-destination-filters {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .sorting-destination-sort {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+}
