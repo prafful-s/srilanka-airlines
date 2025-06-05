@@ -1,5 +1,12 @@
-/* Wrapper for the whole sorting/filter bar */
 .sorting-destination-wrapper {
+  width: 100%;
+
+  &>div {
+    width: 100%;
+  }
+}
+
+.sorting-destination{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,10 +14,6 @@
   flex-wrap: wrap;
   margin-bottom: 24px;
   width: 100%;
-
-  &>div {
-    width: 100%;
-  }
 }
 
 /* Filters group */

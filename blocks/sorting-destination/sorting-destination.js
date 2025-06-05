@@ -1,6 +1,6 @@
 export default function decorate(block) {
   block.innerHTML = `
-    <div class="sorting-destination-wrapper">
+    <div class="sorting-destination">
       <div class="sorting-destination-filters">
         <select class="sorting-destination-select" aria-label="Select route">
           <option value="">Select route</option>
