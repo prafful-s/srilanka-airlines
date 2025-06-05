@@ -38,7 +38,7 @@
   color: #222;
   min-width: 130px;
   outline: none;
-  appearance: none;
+  /* appearance: none; */
   font-weight: 400;
   line-height: 1.4;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -57,7 +57,7 @@
   font-size: 15px;
   cursor: pointer;
   align-self: center;
-  margin-left: 2px;
+  margin: 0;
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
@@ -91,6 +91,7 @@
   gap: 4px;
   cursor: pointer;
   transition: color 0.2s;
+  margin: 0;
 }
 .sorting-destination-sort-btn:hover {
   color: #009cff;
