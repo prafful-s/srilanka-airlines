@@ -132,6 +132,7 @@ export default function decorate(block) {
   arrowContainer.append(leftArrow, rightArrow);
 
   if (window.innerWidth >= 1024) {
+    const slidesToShowNow = getResponsiveSlidesToShow();
     arrowContainer.style.width = `${320 * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
   }
 
