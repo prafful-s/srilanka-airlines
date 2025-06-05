@@ -427,5 +427,22 @@ main .section[data-section-status='initialized'] {
   }
 }
 
+.full-width-banner {
+  margin: 35px auto;
+  
+  
+  @media (min-width: 1100px) { 
+      .hero-wrapper {
+          & > div {
+              padding: 0
+          }
+      }
+
+      picture {
+          position: unset !important;
+      }
+  }
+}
+
 
 
