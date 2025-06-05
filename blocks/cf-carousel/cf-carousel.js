@@ -50,18 +50,9 @@ async function userLocation() {
 }
 
 export default function decorate(block) {
-  // Create navigation buttons container
-  const buttons = document.createElement('div');
-  buttons.classList.add('cf-carousel-buttons');
-
   // Pagination dots container
   const pagination = document.createElement('div');
   pagination.classList.add('cf-carousel-pagination');
-
-  // View All Services button
-  const viewAllBtn = document.createElement('button');
-  viewAllBtn.className = 'cf-carousel-view-all-btn';
-  viewAllBtn.textContent = 'VIEW ALL SERVICES';
 
   // Get configuration from block attributes
   const cfFolderPath = block?.querySelector('[data-aue-prop="reference"]')?.textContent?.trim() || '';
@@ -103,23 +94,6 @@ export default function decorate(block) {
     return card;
   }
 
-  function createNavButton(page, totalSlides, slidesToShow, block, buttons) {
-    const button = document.createElement('button');
-    button.title = `Go to slides ${page * slidesToShow + 1} - ${Math.min((page + 1) * slidesToShow, totalSlides)}`;
-    if (page === 0) button.classList.add('selected');
-    button.addEventListener('click', () => {
-      block.scrollTo({
-        left: block.clientWidth * page,
-        behavior: 'smooth'
-      });
-      [...buttons.children].forEach((r) => r.classList.remove('selected'));
-      button.classList.add('selected');
-      updateArrowVisibility(page);
-      updatePagination(page);
-    });
-    return button;
-  }
-
   // Pagination dots
   function updatePagination(activePage) {
     pagination.innerHTML = '';
@@ -153,10 +127,6 @@ export default function decorate(block) {
       behavior: 'smooth'
     });
     currentPage = page;
-    // Update nav button selection
-    [...buttons.children].forEach((r, idx) => {
-      r.classList.toggle('selected', idx === page);
-    });
     updateArrowVisibility(page);
     updatePagination(page);
   }
@@ -197,13 +167,9 @@ export default function decorate(block) {
     sortedItems.forEach(item => {
       block.append(createSlide(item, currentSlidesToShow));
     });
-    // Render navigation buttons
-    buttons.innerHTML = '';
+    // No navigation buttons, only pagination dots
     const totalSlides = sortedItems.length;
     totalPages = Math.ceil(totalSlides / currentSlidesToShow);
-    for (let page = 0; page < totalPages; page++) {
-      buttons.append(createNavButton(page, totalSlides, currentSlidesToShow, block, buttons));
-    }
     updatePagination(0);
     setCarouselWidth();
   }
@@ -218,16 +184,13 @@ export default function decorate(block) {
 
       renderCarousel();
 
-      // Insert navigation buttons and arrows
-      if (block.nextElementSibling) block.nextElementSibling.replaceWith(buttons);
-      else block.parentElement.append(buttons);
+      // Insert navigation arrows
       if (arrowNavigation) {
         block.parentElement.append(leftArrow);
         block.parentElement.append(rightArrow);
       }
-      // Insert pagination and view all button
+      // Insert pagination only
       block.parentElement.append(pagination);
-      block.parentElement.append(viewAllBtn);
       if (customStyle) block.classList.add(customStyle);
       if (arrowNavigation) updateArrowVisibility(0);
       updatePagination(0);
@@ -235,9 +198,6 @@ export default function decorate(block) {
       block.addEventListener('scroll', () => {
         const page = Math.round(block.scrollLeft / block.clientWidth);
         currentPage = page;
-        [...buttons.children].forEach((r, idx) => {
-          r.classList.toggle('selected', idx === page);
-        });
         if (arrowNavigation) updateArrowVisibility(page);
         updatePagination(page);
       }, { passive: true });

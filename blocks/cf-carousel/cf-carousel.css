@@ -232,26 +232,6 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
   background: #009cff;
 }
 
-/* View All Services Button */
-.cf-carousel-view-all-btn {
-  display: block;
-  margin: 0 auto 24px auto;
-  background: #009cff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 16px 0;
-  font-size: 18px;
-  font-weight: bold;
-  width: 260px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.cf-carousel-view-all-btn:hover {
-  background: #0074d9;
-}
-
 /* Responsive */
 @media (max-width: 900px) {
   .cf-carousel-card {
@@ -260,11 +240,6 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
   }
   .cf-carousel-card-body {
     padding: 16px 8px 12px 8px;
-  }
-  .cf-carousel-view-all-btn {
-    width: 90vw;
-    font-size: 16px;
-    padding: 12px 0;
   }
 }
 
