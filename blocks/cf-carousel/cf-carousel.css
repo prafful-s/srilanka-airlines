@@ -93,22 +93,35 @@ main .cf-carousel-wrapper > .cf-carousel-buttons > button.selected {
   background-color: var(--link-color);
 }
 
-main .cf-carousel-wrapper > .cf-carousel-arrow {
+/* --- Carousel Arrows Container --- */
+.cf-carousel-arrows {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--highlight-background-color);
-  color: var(--highlight-text-color);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none; /* allow arrows to be clickable, but not block carousel */
+  z-index: 2;
 }
 
-main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-left {
-  left: 0;
+.cf-carousel-arrows .cf-carousel-arrow {
+  position: static !important;
+  margin: 0 8px;
+  pointer-events: auto;
 }
-main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
-  right: 0;
+
+/* Remove old absolute positioning for arrows inside wrapper */
+main .cf-carousel-wrapper > .cf-carousel-arrow,
+.cf-carousel-arrow.cf-carousel-arrow-left,
+.cf-carousel-arrow.cf-carousel-arrow-right {
+  position: static !important;
+  left: unset !important;
+  right: unset !important;
+  top: unset !important;
+  transform: none !important;
 }
 
 /* Carousel Card Styles */
@@ -253,10 +266,15 @@ main .cf-carousel-wrapper > .cf-carousel-arrow.cf-carousel-arrow-right {
     min-width: 90vw;
     max-width: 95vw;
   }
-  .cf-carousel-arrow.cf-carousel-arrow-left {
+  .cf-carousel-arrows {
+    width: 100%;
     left: 0;
-  }
-  .cf-carousel-arrow.cf-carousel-arrow-right {
     right: 0;
+    padding: 0 2px;
+  }
+  .cf-carousel-arrows .cf-carousel-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 22px !important;
   }
 }
