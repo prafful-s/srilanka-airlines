@@ -83,14 +83,13 @@ main .carousel-wrapper > :last-child {
 
 main .carousel-wrapper > :last-child button {
   display: block;
-  height: 1px;
+  height: auto;
   width: 30px;
   padding: 0;
   margin: 5px;
   border-radius: 2px;
-
-    display: flex;
-    align-items: center;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
     
     &::before {
         content:"";
