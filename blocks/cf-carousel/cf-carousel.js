@@ -75,12 +75,14 @@ export default function decorate(block) {
 
   let currentSlidesToShow = getResponsiveSlidesToShow();
   let sortedItems = [];
+  let slidesData = [];
+  let currentPage = 0;
+  let totalPages = 1;
 
   // Card-based slide structure
-  function createSlide(item, slidesToShowValue) {
+  function createCard(item) {
     const card = document.createElement('div');
     card.classList.add('cf-carousel-card', layout);
-    // card.style.width = `${100 / slidesToShowValue}%`;
     card.innerHTML = `
       <div class="cf-carousel-card-image">
         <img src="${item.image._path}" alt="${item.title}" loading="eager" />
@@ -92,6 +94,15 @@ export default function decorate(block) {
       </div>
     `;
     return card;
+  }
+
+  // Group cards into slides
+  function groupCards(items, perSlide) {
+    const slides = [];
+    for (let i = 0; i < items.length; i += perSlide) {
+      slides.push(items.slice(i, i + perSlide));
+    }
+    return slides;
   }
 
   // Pagination dots
@@ -118,15 +129,11 @@ export default function decorate(block) {
   rightArrow.innerHTML = '&#8594;'; // Right arrow symbol
   rightArrow.style.display = 'none';
 
-  let currentPage = 0;
-  let totalPages = 1;
-
   function scrollToPage(page) {
-    block.scrollTo({
-      left: block.clientWidth * page,
-      behavior: 'smooth'
-    });
+    const track = block.querySelector('.cf-carousel-track');
+    if (!track) return;
     currentPage = page;
+    track.style.transform = `translateX(-${page * 100}%)`;
     updateArrowVisibility(page);
     updatePagination(page);
   }
@@ -163,15 +170,32 @@ export default function decorate(block) {
   function renderCarousel() {
     block.replaceChildren();
     currentSlidesToShow = getResponsiveSlidesToShow();
-    // Render slides
-    sortedItems.forEach(item => {
-      block.append(createSlide(item, currentSlidesToShow));
+    slidesData = groupCards(sortedItems, currentSlidesToShow);
+    totalPages = slidesData.length;
+    currentPage = 0;
+
+    // Create track
+    const track = document.createElement('div');
+    track.className = 'cf-carousel-track';
+    track.style.width = '100%';
+    track.style.display = 'flex';
+    track.style.transition = 'transform 0.4s';
+    track.style.willChange = 'transform';
+
+    slidesData.forEach((cardsGroup) => {
+      const slide = document.createElement('div');
+      slide.className = 'cf-carousel-slide';
+      cardsGroup.forEach(cardData => {
+        slide.appendChild(createCard(cardData));
+      });
+      track.appendChild(slide);
     });
-    // No navigation buttons, only pagination dots
-    const totalSlides = sortedItems.length;
-    totalPages = Math.ceil(totalSlides / currentSlidesToShow);
+
+    block.appendChild(track);
     updatePagination(0);
     setCarouselWidth();
+    if (arrowNavigation) updateArrowVisibility(0);
+    scrollToPage(0);
   }
 
   (async () => {
@@ -192,23 +216,12 @@ export default function decorate(block) {
       // Insert pagination only
       block.parentElement.append(pagination);
       if (customStyle) block.classList.add(customStyle);
-      if (arrowNavigation) updateArrowVisibility(0);
-      updatePagination(0);
-
-      block.addEventListener('scroll', () => {
-        const page = Math.round(block.scrollLeft / block.clientWidth);
-        currentPage = page;
-        if (arrowNavigation) updateArrowVisibility(page);
-        updatePagination(page);
-      }, { passive: true });
 
       // Responsive: re-render on resize
       window.addEventListener('resize', () => {
         const newSlidesToShow = getResponsiveSlidesToShow();
         if (newSlidesToShow !== currentSlidesToShow) {
           renderCarousel();
-          if (arrowNavigation) updateArrowVisibility(0);
-          updatePagination(0);
         } else {
           setCarouselWidth();
         }
