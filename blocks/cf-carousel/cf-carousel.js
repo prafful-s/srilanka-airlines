@@ -80,7 +80,7 @@ export default function decorate(block) {
   function createSlide(item, slidesToShowValue) {
     const card = document.createElement('div');
     card.classList.add('cf-carousel-card', layout);
-    card.style.width = `${100 / slidesToShowValue}%`;
+    // card.style.width = `${100 / slidesToShowValue}%`;
     card.innerHTML = `
       <div class="cf-carousel-card-image">
         <img src="${item.image._path}" alt="${item.title}" loading="eager" />
@@ -156,7 +156,7 @@ export default function decorate(block) {
   function setCarouselWidth() {
     const cardMaxWidth = 320;
     const slidesToShowNow = getResponsiveSlidesToShow();
-    block.style.maxWidth = `${cardMaxWidth * slidesToShowNow}px`;
+    block.style.maxWidth = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20}px`;
     block.style.margin = '0 auto';
   }
 
