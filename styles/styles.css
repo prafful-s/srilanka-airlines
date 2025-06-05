@@ -82,7 +82,7 @@ main {
 
 h1, h2, h3,
 h4, h5, h6 {
-  font-family: var(--heading-font-family);
+  /* font-family: var(--heading-font-family); */
   font-weight: 400;
   line-height: 1.25;
   margin-top: 1em;
@@ -428,9 +428,6 @@ main .section[data-section-status='initialized'] {
 }
 
 .full-width-banner {
-  margin: 35px auto;
-  
-  
   @media (min-width: 1100px) { 
       .hero-wrapper {
           & > div {
@@ -442,6 +439,14 @@ main .section[data-section-status='initialized'] {
           position: unset !important;
       }
   }
+}
+
+.section.carousel-container.flight-form-container,
+.section.sorting-destination-container.cf-carousel-container,
+.section.cf-carousel-container,
+.section.hero-container
+{
+    margin-bottom: 80px;
 }
 
 
