@@ -378,6 +378,23 @@ main .section[data-section-status='initialized'] {
 }
 
 .default-content-wrapper {
+  h1 {
+    font-family: Roboto, serif, sans-serif;
+    font-size: 30px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #0088DD;
+    margin-bottom: 35px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @media (max-width: 600px) {
+        width: 90%;
+        text-align: center;
+    }
+  }
+  
   p {
       font-family: Helvetica Neue, serif, sans-serif;
       font-size: 12px;
@@ -389,16 +406,8 @@ main .section[data-section-status='initialized'] {
       @media (max-width: 600px) {
           width: 90%;
           margin: 0 auto;
+          text-align: center;
       }
   }
 }
 
-h1 {
-  font-family: Roboto, serif, sans-serif;
-  font-size: 30px;
-  letter-spacing: normal;
-  line-height: 1.2;
-  font-weight: 700;
-  color: #0088DD;
-  margin-bottom: 35px;
-}
