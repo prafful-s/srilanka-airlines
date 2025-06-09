@@ -36,7 +36,13 @@ function sortItemsByLastModified(items) {
 }
 
 async function loadContentFragments(cfQueryPath) {
-  const cfFolder = await fetch(`/graphql/execute.json/srilanka-airlines/${cfQueryPath}`);
+  // Detect if running in author environment
+  const isAuthor = window.location.hostname.includes('author-p140426-e1433687.adobeaemcloud.com');
+  const apiBase = isAuthor
+    ? ''
+    : 'https://publish-p140426-e1433687.adobeaemcloud.com';
+  const apiUrl = `${apiBase}/graphql/execute.json/srilanka-airlines/${cfQueryPath}`;
+  const cfFolder = await fetch(apiUrl);
   const cfFolderData = await cfFolder.json();
   const cfItems = Object.values(cfFolderData?.data)?.[0]?.items;
   return cfItems;
