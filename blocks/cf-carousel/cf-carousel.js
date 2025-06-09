@@ -36,9 +36,14 @@ function sortItemsByLastModified(items) {
 }
 
 async function loadContentFragments(cfQueryPath) {
-  // Detect if running in author environment
-  const isAuthor = window.location.hostname.includes('author-p140426-e1433687.adobeaemcloud.com');
-  const apiBase = isAuthor
+  const { hostname } = window.location;
+  // Use relative path for AEM author or publish domains
+  const isAemCloud = hostname.includes('author-p140426-e1433687.adobeaemcloud.com') ||
+                     hostname.includes('publish-p140426-e1433687.adobeaemcloud.com');
+  // Use publish domain for preview/live... not strict for now.
+  const isPreviewOrLive = hostname.includes('main--srilanka-airlines--prafful-s.aem.page') ||
+                          hostname.includes('main--srilanka-airlines--prafful-s.aem.live');
+  const apiBase = isAemCloud
     ? ''
     : 'https://publish-p140426-e1433687.adobeaemcloud.com';
   const apiUrl = `${apiBase}/graphql/execute.json/srilanka-airlines/${cfQueryPath}`;
