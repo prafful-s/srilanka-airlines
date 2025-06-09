@@ -55,19 +55,33 @@ async function userLocation() {
   };
 }
 
+// Helper to get attribute value by prop name, supporting both author and publish environments
+function getBlockPropValue(block, propName, order) {
+  const attrDiv = block.querySelector(`[data-aue-prop="${propName}"]`);
+  if (attrDiv) {
+    return attrDiv.textContent?.trim() || '';
+  } else if (block.children[order]) {
+    return block.children[order].textContent?.trim() || '';
+  }
+  return '';
+}
+
 export default function decorate(block) {
   // Pagination dots container
   const pagination = document.createElement('div');
   pagination.classList.add('cf-carousel-pagination');
 
-  // Get configuration from block attributes
-  const cfFolderPath = block?.querySelector('[data-aue-prop="reference"]')?.textContent?.trim() || '';
-  const slidesToShowEl = block?.querySelector('[data-aue-prop="slidesToShow"]');
-  const slidesToShow = slidesToShowEl ? parseInt(slidesToShowEl?.textContent.trim(), 10) : 3;
-  const layout = block?.querySelector('[data-aue-prop="layout"]')?.textContent.trim() || 'verticle';
-  const arrowNavigation = block?.querySelector('[data-aue-prop="arrowNavigation"]')?.textContent.trim()?.toLowerCase() === 'true' || true;
-  const autoRotate = block?.querySelector('[data-aue-prop="autoRotate"]')?.textContent.trim()?.toLowerCase() === 'true' || true;
-  const customStyle = block?.querySelector('[data-aue-prop="customStyle"]')?.textContent.trim() || '';
+  // Get configuration from block attributes or sequential divs.
+  const cfFolderPath = getBlockPropValue(block, 'reference', 0);
+  const slidesToShowVal = getBlockPropValue(block, 'slidesToShow', 1);
+  const layout = getBlockPropValue(block, 'layout', 2) || 'verticle';
+  const arrowNavigationVal = getBlockPropValue(block, 'arrowNavigation', 3);
+  const autoRotateVal = getBlockPropValue(block, 'autoRotate', 4);
+  const customStyle = getBlockPropValue(block, 'customStyle', 5);
+
+  const slidesToShow = slidesToShowVal ? parseInt(slidesToShowVal, 10) : 3;
+  const arrowNavigation = arrowNavigationVal?.toLowerCase() === 'true' || true;
+  const autoRotate = autoRotateVal?.toLowerCase() === 'true' || true;
 
   if (!cfFolderPath) return;
 
