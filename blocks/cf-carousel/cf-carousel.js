@@ -79,6 +79,7 @@ export default function decorate(block) {
   const autoRotateVal = getBlockPropValue(block, 'autoRotate', 4);
   const customStyle = getBlockPropValue(block, 'customStyle', 5);
 
+  // Default values
   const slidesToShow = slidesToShowVal ? parseInt(slidesToShowVal, 10) : 3;
   const arrowNavigation = arrowNavigationVal?.toLowerCase() === 'true' || true;
   const autoRotate = autoRotateVal?.toLowerCase() === 'true' || true;
