@@ -109,7 +109,7 @@ export default function decorate(block) {
     // card.style.width = `${100 / slidesToShowValue}%`;
     card.innerHTML = `
       <div class="cf-carousel-card-image">
-        <img src="${item._publishUrl}" alt="${item.title}" loading="eager" />
+        <img src="${item.image._publishUrl}" alt="${item.title}" loading="eager" />
       </div>
       <div class="cf-carousel-card-body">
         <h3>${item.title}</h3>
