@@ -19,11 +19,17 @@ export default async function decorate(block) {
             <div class="form-row">
             <div class="input-icon-group">
                 <span class="icon icon-from"></span>
-                <select id="from"><option>From</option></select>
+                <label for="from-select" class="visually-hidden">From</label>
+                <select id="from-select" name="from">
+                  <option>From</option>
+                </select>
             </div>
             <div class="input-icon-group">
                 <span class="icon icon-to"></span>
-                <select id="to"><option>To</option></select>
+                <label for="to-select" class="visually-hidden">To</label>
+                <select id="to-select" name="to">
+                  <option>To</option>
+                </select>
             </div>
             </div>
             <div class="form-row">
