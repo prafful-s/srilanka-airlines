@@ -76,4 +76,20 @@ export default async function decorate(block) {
         </form>
     </div>
     `;
+
+    const form = block.querySelector('#flight-search-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('AJAX Response:', data);
+        } catch (error) {
+            console.error('Error during AJAX call:', error);
+        }
+    });
 }
