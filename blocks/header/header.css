@@ -449,3 +449,29 @@ button.mock-login-cancel {
   padding: 1rem;
   border-top: 1px solid #bfbfbf;
 }
+
+/* --- Mock Login Loading Indicator --- */
+.mock-login-loading {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mock-login-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #009cff;
+  border-radius: 50%;
+  animation: mock-login-spin 1s linear infinite;
+}
+@keyframes mock-login-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

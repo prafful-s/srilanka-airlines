@@ -361,7 +361,7 @@ main .section[data-section-status='initialized'] {
   }
 }
 
-.left-aligned-carousel.cf-carousel {
+/* .left-aligned-carousel.cf-carousel {
   margin: 0 auto 0 0;
 
   @media (max-width: 600px) {
@@ -375,7 +375,7 @@ main .section[data-section-status='initialized'] {
         margin: 0 auto;
       }
   }
-}
+} */
 
 .left-align-desktop {
   .default-content-wrapper {

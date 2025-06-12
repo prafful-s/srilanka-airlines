@@ -63,7 +63,7 @@ export default async function decorate(block) {
 
     // --- Sign In/Out logic ---
     const users = [
-      { username: 'delhiuser', password: '12345', location: 'Delhi' },
+      { username: 'delhiuser', password: '12345', location: ['Delhi', 'Bangalore', 'Chennai'] },
       { username: 'chennaiuser', password: '12345', location: 'Chennai' },
       { username: 'bangaloreuser', password: '12345', location: 'Bangalore' },
     ];
@@ -86,6 +86,15 @@ export default async function decorate(block) {
       if (!signInBtn) return;
       const user = getCurrentUser();
       signInBtn.textContent = user ? 'Sign Out' : 'Sign In';
+    }
+    function showLoadingIndicator() {
+      let loader = document.querySelector('.mock-login-loading');
+      if (!loader) {
+        loader = document.createElement('div');
+        loader.className = 'mock-login-loading';
+        loader.innerHTML = '<div class="mock-login-loading-spinner"></div>';
+        document.body.appendChild(loader);
+      }
     }
     function showModal() {
       let modal = document.querySelector('.mock-login-modal');
@@ -122,7 +131,10 @@ export default async function decorate(block) {
         if (user) {
           setCurrentUser(user);
           updateSignInText();
+          if (window.mockUserSessionChanged) window.mockUserSessionChanged();
           closeModal();
+          showLoadingIndicator();
+          setTimeout(() => window.location.reload(), 400);
         } else {
           modal.querySelector('.mock-login-error').style.display = 'block';
         }
@@ -145,6 +157,8 @@ export default async function decorate(block) {
       if (user) {
         setCurrentUser(null);
         updateSignInText();
+        showLoadingIndicator();
+        setTimeout(() => window.location.reload(), 400);
       } else {
         showModal();
       }

@@ -71,6 +71,14 @@ function getBlockPropValue(block, propName, order) {
   return '';
 }
 
+function getCurrentUser() {
+  try {
+    return JSON.parse(localStorage.getItem('mockUserSession'));
+  } catch {
+    return null;
+  }
+}
+
 export default function decorate(block) {
   // Pagination dots container
   const pagination = document.createElement('div');
@@ -100,6 +108,7 @@ export default function decorate(block) {
   }
 
   let currentSlidesToShow = getResponsiveSlidesToShow();
+  let allItems = [];
   let sortedItems = [];
 
   // Card-based slide structure
@@ -205,29 +214,41 @@ export default function decorate(block) {
     // block.parentElement.querySelector('.cf-carousel-arrows').style.width = `${cardMaxWidth * slidesToShowNow + (slidesToShowNow - 1) * 20 + 10}px`;
   }
 
-  function renderCarousel() {
+  function renderCarousel(itemsToRender) {
     block.replaceChildren();
     currentSlidesToShow = getResponsiveSlidesToShow();
     // Render slides
-    sortedItems.forEach(item => {
+    itemsToRender.forEach(item => {
       block.append(createSlide(item, currentSlidesToShow));
     });
     // No navigation buttons, only pagination dots
-    const totalSlides = sortedItems.length;
+    const totalSlides = itemsToRender.length;
     totalPages = Math.ceil(totalSlides / currentSlidesToShow);
     updatePagination(0);
     setCarouselWidth();
+  }
+
+  function filterAndRenderByUser() {
+    const user = getCurrentUser();
+    if (user && user.location) {
+      // Filter by user location
+      const filtered = filterItemsByLocation(allItems, user.location);
+      sortedItems = sortItemsByLastModified(filtered);
+    } else {
+      // Show all
+      sortedItems = sortItemsByLastModified(allItems);
+    }
+    renderCarousel(sortedItems);
+    if (arrowNavigation) updateArrowVisibility(0);
+    updatePagination(0);
   }
 
   (async () => {
     try {
       // Fetch and process data
       const cfItems = await loadContentFragments(cfFolderPath);
-      const { location } = await userLocation();
-      const filteredItems = filterItemsByLocation(cfItems, location);
-      sortedItems = sortItemsByLastModified(filteredItems);
-
-      renderCarousel();
+      allItems = cfItems;
+      filterAndRenderByUser();
 
       // Insert navigation arrows
       if (arrowNavigation) {
@@ -250,13 +271,14 @@ export default function decorate(block) {
       window.addEventListener('resize', () => {
         const newSlidesToShow = getResponsiveSlidesToShow();
         if (newSlidesToShow !== currentSlidesToShow) {
-          renderCarousel();
+          filterAndRenderByUser();
           if (arrowNavigation) updateArrowVisibility(0);
           updatePagination(0);
         } else {
           setCarouselWidth();
         }
       });
+
     } catch (error) {
       console.error('Error loading content fragments or user location:', error);
     }
