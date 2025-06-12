@@ -21,22 +21,22 @@ export default async function decorate(block) {
                 <span class="icon icon-from"></span>
                 <label for="from-select" class="visually-hidden">From</label>
                 <select id="from-select" name="from">
-                  <option>SIN</option>
-                  <option>SGN</option>
-                  <option>BKK</option>
-                  <option>KUL</option>
-                  <option>CGK</option>
+                  <option value="SIN">Singapore</option>
+                  <option value="SGN">Vietnam</option>
+                  <option value="BKK">Thailand</option>
+                  <option value="KUL">Malaysia</option>
+                  <option value="CGK">Indonesia</option>
                 </select>
             </div>
             <div class="input-icon-group">
                 <span class="icon icon-to"></span>
                 <label for="to-select" class="visually-hidden">To</label>
                 <select id="to-select" name="to">
-                  <option>SIN</option>
-                  <option>SGN</option>
-                  <option>BKK</option>
-                  <option>KUL</option>
-                  <option>CGK</option>
+                  <option value="SIN">Singapore</option>
+                  <option value="SGN">Vietnam</option>
+                  <option value="BKK">Thailand</option>
+                  <option value="KUL">Malaysia</option>
+                  <option value="CGK">Indonesia</option>
                 </select>
             </div>
             </div>
