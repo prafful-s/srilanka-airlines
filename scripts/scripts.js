@@ -27,27 +27,47 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
-// Define the custom audiences mapping for experience decisioning
-const AUDIENCES = {
-  mobile: () => window.innerWidth < 600,
-  desktop: () => window.innerWidth >= 600,
-  'new-visitor': () => !localStorage.getItem('franklin-visitor-returning'),
-  'returning-visitor': () => !!localStorage.getItem('franklin-visitor-returning'),
+const experimentationConfig = {
+  prodHost: 'www.my-site.com',
+  audiences: {
+    mobile: () => window.innerWidth < 600,
+    desktop: () => window.innerWidth >= 600,
+    // define your custom audiences here as needed
+  }
 };
+
+let runExperimentation;
+let showExperimentationOverlay;
+const isExperimentationEnabled = document.head.querySelector('[name^="experiment"],[name^="campaign-"],[name^="audience-"],[property^="campaign:"],[property^="audience:"]')
+    || [...document.querySelectorAll('.section-metadata div')].some((d) => d.textContent.match(/Experiment|Campaign|Audience/i));
+if (isExperimentationEnabled) {
+  ({
+    loadEager: runExperimentation,
+    loadLazy: showExperimentationOverlay,
+  } = await import('../plugins/experimentation/src/index.js'));
+}
+
+// // Define the custom audiences mapping for experience decisioning
+// const AUDIENCES = {
+//   mobile: () => window.innerWidth < 600,
+//   desktop: () => window.innerWidth >= 600,
+//   'new-visitor': () => !localStorage.getItem('franklin-visitor-returning'),
+//   'returning-visitor': () => !!localStorage.getItem('franklin-visitor-returning'),
+// };
 
 window.hlx.plugins.add('rum-conversion', {
   url: '/plugins/rum-conversion/src/index.js',
   load: 'lazy',
 });
 
-window.hlx.plugins.add('experimentation', {
-  condition: () => getMetadata('experiment')
-    || Object.keys(getAllMetadata('campaign')).length
-    || Object.keys(getAllMetadata('audience')).length,
-  options: { audiences: AUDIENCES },
-  load: 'eager',
-  url: '/plugins/experimentation/src/index.js',
-});
+// window.hlx.plugins.add('experimentation', {
+//   condition: () => getMetadata('experiment')
+//     || Object.keys(getAllMetadata('campaign')).length
+//     || Object.keys(getAllMetadata('audience')).length,
+//   options: { audiences: AUDIENCES },
+//   load: 'eager',
+//   url: '/plugins/experimentation/src/index.js',
+// });
 
 export function getSiteRoot(level = 3, path = window.location.pathname) {
   return path.split(/[/.]/, level).join('/');
@@ -216,6 +236,10 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 
+  if (runExperimentation) {
+    await runExperimentation(document, experimentationConfig);
+  }
+
   await window.hlx.plugins.run('loadEager');
 
   // load demo config
@@ -289,6 +313,11 @@ async function loadLazy(doc) {
 
   // Mark customer as having viewed the page once
   localStorage.setItem('franklin-visitor-returning', true);
+
+  // Add below snippet at the end of the lazy phase
+  if (showExperimentationOverlay) {
+    await showExperimentationOverlay(document, experimentationConfig);
+  }
 
   window.hlx.plugins.run('loadLazy');
 }
