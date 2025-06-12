@@ -77,19 +77,19 @@ export default async function decorate(block) {
     </div>
     `;
 
-    const form = block.querySelector('#flight-search-form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
+    const searchBtn = block.querySelector('.find-flights-button');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', async () => {
         try {
             const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
             console.log('AJAX Response:', data);
         } catch (error) {
             console.error('Error during AJAX call:', error);
         }
-    });
+        });
+    } else {
+        console.warn('Search button not found');
+    }
 }
