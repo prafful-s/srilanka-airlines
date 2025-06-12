@@ -446,7 +446,11 @@ main .section[data-section-status='initialized'] {
 .section.cf-carousel-container,
 .section.hero-container
 {
-    margin-bottom: 80px;
+    margin-bottom: 150px;
+
+    @media (max-width: 600px) {
+        margin-bottom: 80px;
+    }
 }
 
 

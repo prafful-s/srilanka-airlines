@@ -10,7 +10,7 @@ sampleRUM('cwv');
 
 // CMP consent
 try {
-  await fetchPlaceholders();
+  // await fetchPlaceholders();
 } catch (e) { /* ignore */ }
 loadCookieConsent();
 

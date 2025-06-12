@@ -342,3 +342,110 @@ header .header-markets {
 header .header-topbar .icon svg {
   height: 100%;
 }
+
+/* --- Mock Login Modal Styles --- */
+.mock-login-modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &, & * {
+    box-sizing: border-box;
+  }
+}
+.mock-login-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+}
+.mock-login-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  width: 420px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  z-index: 1;
+
+  @media (max-width: 600px) {
+    width: 85%;
+  }
+}
+.mock-login-modal-content h2 {
+  margin: 0;
+  border-bottom: 1px solid #bfbfbf;
+  padding: 2rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0088DD;
+  margin-bottom: 2.5rem;
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+.mock-login-modal-content form {
+  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem 1rem;
+    gap: 1rem;
+  }
+}
+.mock-login-modal-content label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #0088DD;
+}
+.mock-login-modal-content input {
+  width: 100%;
+  padding: 10px 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.mock-login-modal-content button[type="submit"] {
+  margin: 0;
+  width: 100%;
+  background: #009cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mock-login-modal-content button[type="submit"]:hover {
+  background: #0074d9;
+}
+button.mock-login-cancel {
+  margin: 0;
+  background: none;
+  color: #7e7e7e;
+}
+.mock-login-error {
+  color: red;
+  display: none;
+
+  text-align: center;
+  font-size: .9rem;
+  background: #f2f2f2;
+  padding: 1rem;
+  border-top: 1px solid #bfbfbf;
+}
