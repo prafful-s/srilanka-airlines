@@ -121,7 +121,7 @@ export default function decorate(block) {
         <img src="${item.image._publishUrl}" alt="${item.title}" loading="eager" />
       </div>
       <div class="cf-carousel-card-body">
-        <h3>${item.title}</h3>
+        <h2>${item.title}</h2>
         <p>${item.description?.plaintext || item.description || ''}</p>
         ${item.button ? `<button class="cf-carousel-card-btn">${item.button}</button>` : ''}
       </div>
