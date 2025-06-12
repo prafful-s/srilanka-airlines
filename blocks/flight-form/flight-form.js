@@ -79,7 +79,8 @@ export default async function decorate(block) {
 
     const searchBtn = block.querySelector('.find-flights-button');
     if (searchBtn) {
-        searchBtn.addEventListener('click', async () => {
+        searchBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
         try {
             const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price.html');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
