@@ -23,7 +23,7 @@ export default async function decorate(block) {
                 <select id="from-select" name="from">
                   <option value="SIN">Singapore</option>
                   <option value="SGN">Vietnam</option>
-                  <option value="BKK">Thailand</option>
+                  <option value="BKK" selected>Thailand</option>
                   <option value="KUL">Malaysia</option>
                   <option value="CGK">Indonesia</option>
                 </select>
@@ -32,7 +32,7 @@ export default async function decorate(block) {
                 <span class="icon icon-to"></span>
                 <label for="to-select" class="visually-hidden">To</label>
                 <select id="to-select" name="to">
-                  <option value="SIN">Singapore</option>
+                  <option value="SIN" selected>Singapore</option>
                   <option value="SGN">Vietnam</option>
                   <option value="BKK">Thailand</option>
                   <option value="KUL">Malaysia</option>
