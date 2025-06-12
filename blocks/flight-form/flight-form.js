@@ -82,7 +82,7 @@ export default async function decorate(block) {
         searchBtn.addEventListener('click', async (e) => {
             e.preventDefault();
         try {
-            const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price.html');
+            const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
             console.log('AJAX Response:', data);
