@@ -174,12 +174,12 @@ export default function decorate(block) {
 
   let currentPage = 0;
   let totalPages = 1;
-  let suppressScrollHandler = false;
+  let scrollTarget = null;
 
   function scrollToPage(page) {
-    suppressScrollHandler = true;
+    scrollTarget = block.clientWidth * page;
     block.scrollTo({
-      left: block.clientWidth * page,
+      left: scrollTarget,
       behavior: 'smooth'
     });
     currentPage = page;
@@ -263,11 +263,13 @@ export default function decorate(block) {
       updatePagination(0);
 
       block.addEventListener('scroll', () => {
-        if (suppressScrollHandler) {
-          setTimeout(() => {
-            suppressScrollHandler = false;
-          }, 1000);
-          return;
+        if (scrollTarget !== null) {
+          if (Math.abs(block.scrollLeft - scrollTarget) < 2) {
+            scrollTarget = null;
+          } else {
+            // Still animating, don't update UI yet
+            return;
+          }
         }
         const page = Math.round(block.scrollLeft / block.clientWidth);
         currentPage = page;

@@ -92,6 +92,9 @@
   cursor: pointer;
   transition: color 0.2s;
   margin: 0;
+  @media (max-width: 600px) {
+    padding: 0;
+  }
 }
 .sorting-destination-sort-btn:hover {
   color: #009cff;
