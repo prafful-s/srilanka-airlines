@@ -36,7 +36,7 @@ export default async function decorate(block) {
           const label = btnDiv.textContent.trim();
           const button = document.createElement('div');
           button.className = 'flight-form-tab';
-          button.textContent = label;
+          button.appendChild(btnDiv.children[0].cloneNode(true));
           // Copy all attributes from btnDiv to button
           if (btnDiv.attributes) {
             for (let attr of btnDiv.attributes) {
