@@ -285,6 +285,21 @@
           }
         },
         {
+          "title": "Flight Tab",
+          "id": "flight-tab",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Flight Tab",
+                  "model": "flight-tab"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Sorting Destination",
           "id": "sorting-destination",
           "plugins": {

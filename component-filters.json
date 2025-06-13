@@ -60,7 +60,7 @@
     {
       "id": "flight-form",
       "components": [
-        "button"
+        "flight-tab"
       ]
     }
   ]

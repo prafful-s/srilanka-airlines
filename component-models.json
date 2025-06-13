@@ -385,5 +385,17 @@
         ]
       }
     ]
+  },
+  {
+    "id": "flight-tab",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "value": "",
+        "label": "Label",
+        "valueType": "string"
+      }
+    ]
   }
 ]
