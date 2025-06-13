@@ -1,5 +1,22 @@
+// Helper to get attribute value by prop name, supporting both author and publish environments
+function getBlockPropValue(block, propName, order) {
+    const attrDiv = block.querySelector(`[data-aue-prop="${propName}"]`);
+    if (attrDiv) {
+      return attrDiv.textContent?.trim() || '';
+    } else if (block.children[order]) {
+      return block.children[order].textContent?.trim() || '';
+    }
+    return '';
+}
+
 export default async function decorate(block) {
     console.log("flight-form added");
+    const classSelector = getBlockPropValue(block, 'classSelector', 0);
+    const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1);
+    const buttonList = getBlockPropValue(block, 'buttonList', 2);
+    console.log('classSelector is ', classSelector);
+    console.log('multiCityPosition is ', multiCityPosition);
+    console.log('buttonList is ', buttonList);
     block.innerHTML= `
     <div class="flight-booking-form">
         <div class="flight-form-tabs">
