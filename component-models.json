@@ -381,46 +381,6 @@
               { "name": "Top", "value": "top" },
               { "name": "label", "value": "bottom" }
             ]
-          },
-          {
-            "component": "radio-group",
-            "label": "Card Layout",
-            "name": "layout",
-            "value": "verticle",
-            "valueType": "string",
-            "options": [
-              { "name": "Verticle", "value": "verticle" },
-              { "name": "Horizontal", "value": "horizontal" }
-            ]
-          },
-          {
-            "component": "radio-group",
-            "label": "Arrow Buttons",
-            "name": "arrowNavigation",
-            "value": true,
-            "valueType": "boolean",
-            "options": [
-              { "name": "Enable", "value": true },
-              { "name": "Disabled", "value": false }
-            ]
-          },
-          {
-            "component": "radio-group",
-            "label": "Auto Rotate",
-            "name": "autoRotate",
-            "value": true,
-            "valueType": "string",
-            "options": [
-              { "name": "Enable", "value": true },
-              { "name": "Disabled", "value": false }
-            ]
-          },
-          {
-            "component": "text",
-            "name": "customStyle",
-            "value": "",
-            "label": "Custom class selector",
-            "valueType": "string"
           }
         ]
       }
