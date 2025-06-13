@@ -369,7 +369,7 @@
         "label": "More Options",
         "name": "container",
         "valueType": "string",
-        "collapsible": false,
+        "collapsible": true,
         "fields": [
           {
             "component": "select",
