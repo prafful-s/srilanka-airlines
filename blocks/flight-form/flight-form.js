@@ -24,7 +24,7 @@ export default async function decorate(block) {
     console.log("flight-form added");
     const classSelector = getBlockPropValue(block, 'classSelector', 0);
     const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1);
-    const buttonList = getBlockComponent(block, 'button', 2);
+    const buttonList = getBlockComponent(block, 'item', 2);
     console.log('classSelector is ', classSelector);
     console.log('multiCityPosition is ', multiCityPosition);
     console.log('buttonList is ', buttonList);
