@@ -360,7 +360,7 @@
       {
         "component": "text",
         "name": "classSelector",
-        "value": "",
+        "value": "default",
         "label": "class selector",
         "valueType": "string"
       },
