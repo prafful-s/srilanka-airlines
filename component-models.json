@@ -365,23 +365,14 @@
         "valueType": "string"
       },
       {
-        "component": "container",
-        "label": "More Options",
-        "name": "container",
-        "valueType": "string",
-        "collapsible": true,
-        "fields": [
-          {
-            "component": "select",
-            "label": "Multi-City Position",
-            "name": "multiCityPosition",
-            "value": "top",
-            "valueType": "number",
-            "options": [
-              { "name": "Top", "value": "top" },
-              { "name": "Bottom", "value": "bottom" }
-            ]
-          }
+        "component": "select",
+        "label": "Multi-City Position",
+        "name": "multiCityPosition",
+        "value": "top",
+        "valueType": "number",
+        "options": [
+          { "name": "Top", "value": "top" },
+          { "name": "Bottom", "value": "bottom" }
         ]
       }
     ]

@@ -27,8 +27,8 @@ function getBlockComponent(block, resourceName, order) {
 
 export default async function decorate(block) {
     console.log("flight-form added");
-    const classSelector = getBlockPropValue(block, 'classSelector', 0);
-    const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1);
+    const classSelector = getBlockPropValue(block, 'classSelector', 0) || 'default';
+    const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1) || 'top';
     const buttonList = getBlockComponent(block, 'flight-tab', 2);
     const tabButtons = [];
 
@@ -66,7 +66,7 @@ export default async function decorate(block) {
                 <label><input type="checkbox" id="redeem"> Redeem</label>
                 <label><input type="checkbox" id="voucher-redeem"> Voucher Redeem</label>
             </div>
-            ${multiCityPosition !== 'bottom' ? multiCityLink.outerHTML : ''}
+            ${multiCityPosition === 'top' ? multiCityLink.outerHTML : ''}
             </div>
             <div class="form-row">
             <div class="input-icon-group">
