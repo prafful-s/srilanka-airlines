@@ -29,7 +29,7 @@ export default async function decorate(block) {
     console.log('multiCityPosition is ', multiCityPosition);
     console.log('buttonList is ', buttonList);
     const tabButtons = [];
-    return block;
+
     if (buttonList && buttonList.length) {
         buttonList.forEach((btnDiv, idx) => {
           // You can customize the label extraction as needed
