@@ -3,15 +3,15 @@ export default function decorate(block) {
     <div class="sorting-destination">
       <div class="sorting-destination-filters">
         <select class="sorting-destination-select" aria-label="Select route">
-          <option value="">Select route</option>
+          <option value="select-route">Select route</option>
           <!-- Add more options as needed -->
         </select>
         <select class="sorting-destination-select" aria-label="Departure Date">
-          <option value="">Departure Date</option>
+          <option value="select-departure-date">Departure Date</option>
           <!-- Add more options as needed -->
         </select>
         <select class="sorting-destination-select" aria-label="Budget">
-          <option value="">Budget</option>
+          <option value="select-budget">Budget</option>
           <!-- Add more options as needed -->
         </select>
         <button class="sorting-destination-clear" type="button">Clear</button>
