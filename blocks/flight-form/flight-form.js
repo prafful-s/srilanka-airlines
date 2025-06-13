@@ -77,6 +77,18 @@ export default async function decorate(block) {
     </div>
     `;
 
+    const fromSelect = block.querySelector("#from-select");
+    const toSelect = block.querySelector("#to-select");
+
+    // Update "To" options when "From" changes
+    fromSelect.addEventListener("change", () => {
+        const selectedFrom = fromSelect.value;
+
+        for (let option of toSelect.options) {
+            option.disabled = (option.value === selectedFrom);
+        }
+    });
+
     const searchBtn = block.querySelector('.find-flights-button');
     if (searchBtn) {
         searchBtn.addEventListener('click', async (e) => {
