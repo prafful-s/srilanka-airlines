@@ -379,7 +379,7 @@
             "valueType": "number",
             "options": [
               { "name": "Top", "value": "top" },
-              { "name": "label", "value": "bottom" }
+              { "name": "Bottom", "value": "bottom" }
             ]
           }
         ]
