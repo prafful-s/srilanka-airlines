@@ -33,7 +33,7 @@ export default async function decorate(block) {
         buttonList.forEach((btnDiv, idx) => {
           // You can customize the label extraction as needed
           const label = btnDiv.textContent.trim();
-          const button = document.createElement('button');
+          const button = document.createElement('div');
           button.className = 'flight-form-tab';
           button.textContent = label;
           // Copy all attributes from btnDiv to button
