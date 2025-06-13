@@ -12,10 +12,15 @@ function getBlockPropValue(block, propName, order) {
 // Helper to get components by name, supporting both author and publish environments
 function getBlockComponent(block, resourceName, order) {
     const nodeList = block.querySelectorAll(`[data-aue-model="${resourceName}"]`);
-    if (nodeList) {
+    if (nodeList.length > 0) {
       return nodeList;
     } else if (block.children[order]) {
-      return block.children[order].children;
+      // Return all children from the given order index onward
+      const arr = [];
+      for (let i = order; i < block.children.length; i++) {
+        arr.push(block.children[i]);
+      }
+      return arr;
     }
     return '';
 }
@@ -25,10 +30,12 @@ export default async function decorate(block) {
     const classSelector = getBlockPropValue(block, 'classSelector', 0);
     const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1);
     const buttonList = getBlockComponent(block, 'flight-tab', 2);
-    console.log('classSelector is ', classSelector);
-    console.log('multiCityPosition is ', multiCityPosition);
-    console.log('buttonList is ', buttonList);
     const tabButtons = [];
+
+    const multiCityLink = document.createElement('a');
+    multiCityLink.href = '#';
+    multiCityLink.className = 'multi-city-link';
+    multiCityLink.textContent = 'Multi City';
 
     if (buttonList && buttonList.length) {
         buttonList.forEach((btnDiv, idx) => {
@@ -38,7 +45,7 @@ export default async function decorate(block) {
           button.className = 'flight-form-tab';
           button.textContent = btnDiv.textContent.trim();
           // Copy all attributes from btnDiv to button
-          if (btnDiv.attributes) {
+          if (btnDiv?.attributes?.length > 0) {
             for (let attr of btnDiv.attributes) {
               if (attr.value !== undefined && attr.value !== null && attr.value !== '') {
                 button.setAttribute(attr.name, attr.value);
@@ -51,10 +58,6 @@ export default async function decorate(block) {
     block.innerHTML= `
     <div class="flight-booking-form">
         <div class="flight-form-tabs">
-            <!-- <button class="flight-form-tab active">BOOK</button>
-            <button class="flight-form-tab">MANAGE</button>
-            <button class="flight-form-tab">CHECK-IN</button>
-            <button class="flight-form-tab">FLIGHT + HOTEL</button> -->
             ${tabButtons.map(btn => btn.outerHTML).join('')}
         </div>
         <form>
@@ -63,7 +66,7 @@ export default async function decorate(block) {
                 <label><input type="checkbox" id="redeem"> Redeem</label>
                 <label><input type="checkbox" id="voucher-redeem"> Voucher Redeem</label>
             </div>
-            <a href="#" class="multi-city-link">Multi City</a>
+            ${multiCityPosition !== 'bottom' ? multiCityLink.outerHTML : ''}
             </div>
             <div class="form-row">
             <div class="input-icon-group">
@@ -114,6 +117,7 @@ export default async function decorate(block) {
                         <label><input type="radio" name="tripType" checked> Round Trip</label>
                         <label><input type="radio" name="tripType"> One Way</label>
                     </div>
+                    ${multiCityPosition === 'bottom' ? multiCityLink.outerHTML : ''}
                 </div>
                 <div class="input-group button-group">
                     <div class="radio-group">
