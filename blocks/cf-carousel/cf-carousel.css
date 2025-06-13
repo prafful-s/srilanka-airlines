@@ -125,7 +125,7 @@ main .cf-carousel-wrapper > .cf-carousel-buttons > button.selected {
   align-items: center;
   justify-content: center;
   border-radius: 50% !important;
-  background: #009cff !important;
+  background: var(--button-background-color) !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   pointer-events: auto;
   margin: 0 -22px;
@@ -199,15 +199,8 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
   width: 100%;
 }
 
-.cf-carousel-card-body h2 {
-  color: #0088dd;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 10px 0;
-}
-
-.cf-carousel-card-body h3 {
-  color: #0088dd;
+.cf-carousel-card-body h2, .cf-carousel-card-body h3 {
+  color: var(--button-background-color);
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 10px 0;
@@ -220,7 +213,7 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
 }
 
 .cf-carousel-card-btn {
-  background: #009cff;
+  background: var(--button-background-color);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -234,12 +227,12 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
 }
 
 .cf-carousel-card-btn:hover {
-  background: #0074d9;
+  background: var(--button-background-color-hover);
 }
 
 /* Carousel Arrows */
 .cf-carousel-arrow {
-  background: #009cff !important;
+  background: var(--button-background-color) !important;
   color: #fff !important;
   border: none !important;
   border-radius: 50% !important;
@@ -253,6 +246,10 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
+  
+  &:hover {
+    background: var(--button-background-color-hover) !important;
+  }
 }
 
 .cf-carousel-arrow.cf-carousel-arrow-left {
@@ -280,7 +277,7 @@ main .cf-carousel-wrapper > .cf-carousel-arrow,
 }
 
 .cf-carousel-pagination-dot.active {
-  background: #009cff;
+  background: var(--button-background-color);
 }
 
 /* Responsive */

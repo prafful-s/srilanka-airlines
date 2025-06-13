@@ -34,8 +34,8 @@
   
 .flight-form-tab {
     background: #fff;
-    color: #0088dd;
-    border: 2px solid #0088dd;
+    color: var(--button-background-color);
+    border: 2px solid var(--button-background-color);
     border-radius: 8px;
     font-weight: bold;
     font-size: 14px;
@@ -47,7 +47,7 @@
 }
 
 .flight-form-tab:hover, .flight-form-tab.active {
-    background: #0088dd;
+    background: var(--button-background-color);
     color: #fff;
 }
 
@@ -192,7 +192,7 @@
 }
 
 .find-flights-button {
-    background: #009cff;
+    background: var(--button-background-color);
     color: #fff;
     border: none;
     border-radius: 6px;

@@ -13,7 +13,7 @@
  :root {
   /* colors */
   --color-yellow: #ffea00;
-  --link-color: #0088dd;
+  --link-color: #003366;
   --link-hover-color: #153d8a;
   --background-color: #fff;
   --overlay-background-color: #eee;
@@ -46,7 +46,10 @@
   --nav-height: 58px;
 
   /* buttons */
-  --button-background-color: #019cff;
+   /* --button-background-color: #0088dd; */
+  --button-background-color: #153d8a;
+  --button-background-color-hover: #0074d9;
+ 
   --button-border-radius: 0;
   --button-text-color: #ffffff;
   --button-padding: 1em 2.5em;
@@ -394,7 +397,7 @@ main .section[data-section-status='initialized'] {
     letter-spacing: normal;
     line-height: 1.2;
     font-weight: 700;
-    color: #0088DD;
+    color: var(--button-background-color);
     margin-bottom: 35px;
   }
 

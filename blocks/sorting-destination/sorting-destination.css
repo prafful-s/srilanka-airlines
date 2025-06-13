@@ -62,7 +62,7 @@
   transition: color 0.2s;
 }
 .sorting-destination-clear:hover {
-  color: #009cff;
+  color: var(--button-background-color);
 }
 
 /* Sort group */
@@ -77,7 +77,7 @@
 .sorting-destination-sort-icon {
   display: flex;
   align-items: center;
-  color: #009cff;
+  color: var(--button-background-color);
 }
 
 .sorting-destination-sort-btn {
@@ -97,7 +97,7 @@
   }
 }
 .sorting-destination-sort-btn:hover {
-  color: #009cff;
+  color: var(--button-background-color);
 }
 
 .sorting-destination-sort-label {
@@ -105,7 +105,7 @@
   color: #222;
 }
 .sorting-destination-sort-label strong {
-  color: #009cff;
+  color: var(--button-background-color);
   font-weight: 700;
   letter-spacing: 0.01em;
 }
