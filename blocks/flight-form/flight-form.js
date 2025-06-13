@@ -86,7 +86,7 @@ export default async function decorate(block) {
             const destination = block.querySelector("#to-select").value;
             console.log('Destination is', destination);
             try {
-                const url = `https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price?from=${encodeURIComponent(origin)}&to=${encodeURIComponent(destination)}`;
+                const url = `https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}`;
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
