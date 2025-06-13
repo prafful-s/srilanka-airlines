@@ -9,11 +9,22 @@ function getBlockPropValue(block, propName, order) {
     return '';
 }
 
+// Helper to get components by name, supporting both author and publish environments
+function getBlockComponent(block, resourceName, order) {
+    const nodeList = block.querySelectorAll(`[data-aue-resource="$${resourceName}"]`);
+    if (attrDiv) {
+      return nodeList;
+    } else if (block.children[order]) {
+      return block.children[order].children;
+    }
+    return '';
+}
+
 export default async function decorate(block) {
     console.log("flight-form added");
     const classSelector = getBlockPropValue(block, 'classSelector', 0);
     const multiCityPosition = getBlockPropValue(block, 'multiCityPosition', 1);
-    const buttonList = getBlockPropValue(block, 'buttonList', 2);
+    const buttonList = getBlockComponent(block, 'button', 2);
     console.log('classSelector is ', classSelector);
     console.log('multiCityPosition is ', multiCityPosition);
     console.log('buttonList is ', buttonList);
