@@ -81,14 +81,18 @@ export default async function decorate(block) {
     if (searchBtn) {
         searchBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-        try {
-            const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price');
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const data = await response.json();
-            console.log('AJAX Response:', data);
-        } catch (error) {
-            console.error('Error during AJAX call:', error);
-        }
+            const origin = block.querySelector("#from-select").value;
+            console.log('Origin is ', origin);
+            const destination = block.querySelector("#to-select").value;
+            console.log('Destination is', destination);
+            try {
+                const response = await fetch('https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                console.log('AJAX Response:', data);
+            } catch (error) {
+                console.error('Error during AJAX call:', error);
+            }
         });
     } else {
         console.warn('Search button not found');
