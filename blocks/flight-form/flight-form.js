@@ -11,7 +11,7 @@ function getBlockPropValue(block, propName, order) {
 
 // Helper to get components by name, supporting both author and publish environments
 function getBlockComponent(block, resourceName, order) {
-    const nodeList = block.querySelectorAll(`[data-aue-resource="$${resourceName}"]`);
+    const nodeList = block.querySelectorAll(`[data-aue-resource$="${resourceName}"]`);
     if (attrDiv) {
       return nodeList;
     } else if (block.children[order]) {
