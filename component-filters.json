@@ -56,5 +56,11 @@
       "components": [
         "slide"
       ]
+    },
+    {
+      "id": "flight-form",
+      "components": [
+        "tab"
+      ]
     }
   ]
