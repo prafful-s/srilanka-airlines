@@ -28,13 +28,33 @@ export default async function decorate(block) {
     console.log('classSelector is ', classSelector);
     console.log('multiCityPosition is ', multiCityPosition);
     console.log('buttonList is ', buttonList);
+    const tabButtons = [];
+    if (buttonList && buttonList.length) {
+        buttonList.forEach((btnDiv, idx) => {
+          // You can customize the label extraction as needed
+          const label = btnDiv.textContent.trim();
+          const button = document.createElement('button');
+          button.className = 'flight-form-tab';
+          button.textContent = label;
+          // Copy all attributes from btnDiv to button
+          if (btnDiv.attributes) {
+            for (let attr of btnDiv.attributes) {
+              if (attr.value !== undefined && attr.value !== null && attr.value !== '') {
+                button.setAttribute(attr.name, attr.value);
+              }
+            }
+          }
+          tabButtons.push(button);
+        });
+      }
     block.innerHTML= `
     <div class="flight-booking-form">
         <div class="flight-form-tabs">
-            <button class="flight-form-tab active">BOOK</button>
+            <!-- <button class="flight-form-tab active">BOOK</button>
             <button class="flight-form-tab">MANAGE</button>
             <button class="flight-form-tab">CHECK-IN</button>
-            <button class="flight-form-tab">FLIGHT + HOTEL</button>
+            <button class="flight-form-tab">FLIGHT + HOTEL</button> -->
+            ${tabButtons.map(btn => btn.outerHTML).join('')}
         </div>
         <form>
             <div class="form-row top-row">
