@@ -208,6 +208,35 @@
     background: #0074d9;
 }
 
+.flight-offer-result {
+    margin-top: 70px;
+    text-align: center;
+
+    strong, .flight-offer-price {
+        color: var(--button-background-color);
+    }
+}
+
+.flight-offer-result.error {
+    color: #ff0000;
+}
+
+.flight-form-loader {
+    margin-top: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+
+
+
 /* Responsive Styles */
 @media (max-width: 760px) {
     .flight-booking-form {

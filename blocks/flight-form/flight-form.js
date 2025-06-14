@@ -146,17 +146,39 @@ export default async function decorate(block) {
     if (searchBtn) {
         searchBtn.addEventListener('click', async (e) => {
             e.preventDefault();
+            // Remove any previous result or loader
+            const prevResult = block.querySelector('.flight-offer-result');
+            if (prevResult) prevResult.remove();
+            const prevLoader = block.querySelector('.flight-form-loader');
+            if (prevLoader) prevLoader.remove();
+
+            // Create and show loader overlay
+            const loader = document.createElement('div');
+            loader.className = 'flight-form-loader';
+            loader.innerHTML = `<div class="loader-spinner"></div><span>Searching for the best fares...</span>`;
+            block.appendChild(loader);
+
             const origin = block.querySelector("#from-select").value;
-            console.log('Origin is ', origin);
             const destination = block.querySelector("#to-select").value;
-            console.log('Destination is', destination);
             try {
                 const url = `https://publish-p140426-e1433687.adobeaemcloud.com/content/flight-offer-price?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}`;
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
-                console.log('AJAX Response:', data);
+                // Remove loader
+                loader.remove();
+                // extract lowest price from data
+                const price = data.lowestPrice || 'N/A';
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'flight-offer-result';
+                resultDiv.innerHTML = `<strong>Great news!</strong> You can book flights starting from <span class="flight-offer-price">$${price}</span>.`;
+                block.appendChild(resultDiv);
             } catch (error) {
+                loader.remove();
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'flight-offer-result error';
+                errorDiv.textContent = 'Sorry, we could not retrieve flight prices at this time.';
+                block.appendChild(errorDiv);
                 console.error('Error during AJAX call:', error);
             }
         });
