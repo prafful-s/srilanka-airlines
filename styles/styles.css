@@ -331,23 +331,6 @@ main .section[data-section-status='initialized'] {
   display: none;
 }
 
-/* cookie consent styles */
-.cc-window, .cc-window.cc-floating {
-
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
-
-  padding: 1em;
-  max-width: 100%;
-  flex-direction: column;
-  bottom: 0;
-
-  @media (min-width: 1100px) {
-    padding: 2em;
-  }
-}
-
 .cc-highlight .cc-btn.cc-customize, .cc-policies-links.cc-link {
   color: var(--highlight-text-color);
 }
