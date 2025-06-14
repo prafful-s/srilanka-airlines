@@ -332,7 +332,7 @@ main .section[data-section-status='initialized'] {
 }
 
 /* cookie consent styles */
-.cc-window {
+.cc-window, .cc-window.cc-floating {
 
   background-color: var(--background-color);
   color: var(--text-color);
