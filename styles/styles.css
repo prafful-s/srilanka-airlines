@@ -332,11 +332,20 @@ main .section[data-section-status='initialized'] {
 }
 
 /* cookie consent styles */
-.cc-window.cc-banner.cc-theme-block {
-  padding: 12px 10px;
+.cc-window {
+
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
+
+  padding: 1em;
+  max-width: 100%;
+  flex-direction: column;
+  bottom: 0;
+
+  @media (min-width: 1100px) {
+    padding: 2em;
+  }
 }
 
 .cc-highlight .cc-btn.cc-customize, .cc-policies-links.cc-link {
@@ -456,13 +465,6 @@ main .section[data-section-status='initialized'] {
     }
 }
 
-cc-window.cc-floating {
-  padding: 1em;
-  max-width: 100%;
-  flex-direction: column;
-  background: #fff;
-  color: #000;
-  bottom: 0;
-}
+
 
 
