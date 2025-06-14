@@ -456,5 +456,13 @@ main .section[data-section-status='initialized'] {
     }
 }
 
+cc-window.cc-floating {
+  padding: 1em;
+  max-width: 100%;
+  flex-direction: column;
+  background: #fff;
+  color: #000;
+  bottom: 0;
+}
 
 
